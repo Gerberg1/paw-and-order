@@ -81,6 +81,6 @@ public class JokeLimitedController {
       throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "Too many requests, try again later");
     }
     // Otherwise request a joke and return the response.
-    return service.makeRequest(about, JokeController.SYSTEM_MESSAGE);
+    return service.makeRequest(about, HealthController.SYSTEM_MESSAGE);
   }
 }

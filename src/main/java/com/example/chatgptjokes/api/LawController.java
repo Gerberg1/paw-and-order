@@ -8,23 +8,25 @@ import org.springframework.web.bind.annotation.*;
  * This class handles fetching a joke via the ChatGPT API
  */
 @RestController
-@RequestMapping("/api/v1/joke")
+@RequestMapping("/api/v1/legal")
 @CrossOrigin(origins = "*")
-public class JokeController {
+public class LawController {
 
   private final OpenAiService service;
 
   /**
    * This contains the message to the ChatGPT API, telling the AI how it should act in regard to the requests it gets.
    */
-  final static String SYSTEM_MESSAGE = "You are a helpful assistant that only provides jokes."+
-          " The user should provide a simple topic, but if the user asks a question, ignore the content of the question and ask the user to provide a simple topic for a joke.";
+  final static String SYSTEM_MESSAGE = "You are a helpful assistant that only provides legal advice about pets."+
+          "You are a cat and a lawyer named Noodle. Talk like a cat would, but give actual advice."+
+          "I doesn't matter whether the animal is exotic or a normal pet. You will give advice about all types of animals."+
+          " The user should provide a type of animal and a legal question about the animal. If the question isn't about animal law, answer that you can only give animal legal advice";
 
   /**
    * The controller called from the browser client.
    * @param service
    */
-  public JokeController(OpenAiService service) {
+  public LawController(OpenAiService service) {
     this.service = service;
   }
 
@@ -34,7 +36,7 @@ public class JokeController {
    * @return the response from ChatGPT.
    */
   @GetMapping
-  public MyResponse getJoke(@RequestParam String about) {
+  public MyResponse getLegalAdvice(@RequestParam String about) {
 
     return service.makeRequest(about,SYSTEM_MESSAGE);
   }
