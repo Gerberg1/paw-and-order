@@ -1,9 +1,9 @@
-package com.example.chatgptjokes.api;
+package com.example.pawandorder.api;
 
 
 
-import com.example.chatgptjokes.dtos.MyResponse;
-import com.example.chatgptjokes.service.OpenAiService;
+import com.example.pawandorder.dtos.MyResponse;
+import com.example.pawandorder.service.OpenAiService;
 import org.springframework.web.bind.annotation.*;
 
 /**

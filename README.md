@@ -31,7 +31,7 @@ Shows how to make custom responses that the ChatGPT AI has not been trained in.
 ## Frontend
 - [index.html](https://github.com/RonniKahalani/chatgpt-jokes/blob/master/src/main/resources/static/index.html)
 - [main.css](https://github.com/RonniKahalani/chatgpt-jokes/blob/master/src/main/resources/static/css/main.css)
-- [main.js](https://github.com/RonniKahalani/chatgpt-jokes/blob/master/src/main/resources/static/js/main.js)
+- [psychology.js](https://github.com/RonniKahalani/chatgpt-jokes/blob/master/src/main/resources/static/js/main.js)
 
 ## Adding an API key
 You have to create a OpenAI account with credits and an API key to run this example successfully.

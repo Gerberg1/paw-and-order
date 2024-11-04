@@ -1,7 +1,7 @@
-package com.example.chatgptjokes.api;
+package com.example.pawandorder.api;
 
-import com.example.chatgptjokes.dtos.MyResponse;
-import com.example.chatgptjokes.service.OpenAiService;
+import com.example.pawandorder.dtos.MyResponse;
+import com.example.pawandorder.service.OpenAiService;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/legal")
 @CrossOrigin(origins = "*")
-public class LawController {
+public class LegalController {
 
   private final OpenAiService service;
 
@@ -26,7 +26,7 @@ public class LawController {
    * The controller called from the browser client.
    * @param service
    */
-  public LawController(OpenAiService service) {
+  public LegalController(OpenAiService service) {
     this.service = service;
   }
 
