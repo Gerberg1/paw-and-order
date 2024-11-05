@@ -3,18 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <title>PAW & ORDER</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha384-CM3N9NClp0b2YVtpN2hYjnS4GwYok8wGqFL6rq0VQPz+MZFEVv6hLsJ+Dm/4RmZu" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f8f9fa;
+        }
+
+
+        .logo {
+            display: inline-block;
+            margin-bottom: 40px;
+            position: relative;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .logo .paw-icon {
+            color: #FF4500;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .logo:after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 5px;
+            background: saddlebrown;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        h1 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+
+        .cat-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .cat-links a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .cat-links img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .cat-links img:hover {
+            transform: scale(1.05);
+        }
+
+
+        .cat-links a:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 120px;
+            background-color: saddlebrown;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: -35px;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            .cat-links {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
+
+<div class="logo">
+    <i class="fas fa-paw paw-icon"></i>
+    PAW &amp; ORDER
+</div>
+
 <h1>What advice are you looking for?</h1>
-<a id="Whiskers">
-    <img src="/images/Whiskers.png" alt="Whiskers">
-</a>
-<a id="Mittens">
-    <img src="/images/Mittens.png" alt="Mittens">
-</a>
-<a id="Noodle">
-    <img src="/images/Noodle.png" alt="Noodle">
-</a>
+
+<div class="cat-links">
+    <a id="Whiskers">
+        <img src="/images/Whiskers.png" alt="Whiskers">
+        <div class="tooltip-text">Health Advice</div>
+    </a>
+    <a id="Mittens">
+        <img src="/images/Mittens.png" alt="Mittens">
+        <div class="tooltip-text">Psychology Advice</div>
+    </a>
+    <a id="Noodle">
+        <img src="/images/Noodle.png" alt="Noodle">
+        <div class="tooltip-text">Legal Advice</div>
+    </a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2h5rzdzTxfQtO4XlzVByZ1SMuB+rZP/h3giJTtw4j1pJ/xc4+K9P1F2RQSZ"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
+        integrity="sha384-LtrjvnR4Twt/qOuYxYY0vG4vTH4pjJ8wbNV6sDfYqclOmS1Of6MZQBJ+FxhRG6ja"
+        crossorigin="anonymous"></script>
 
 <script>
     document.getElementById("Whiskers").onclick = function() {
