@@ -4,9 +4,7 @@ import com.example.pawandorder.dtos.MyResponse;
 import com.example.pawandorder.service.OpenAiService;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * This class handles fetching a joke via the ChatGPT API
- */
+
 @RestController
 @RequestMapping("/api/v1/health")
 @CrossOrigin(origins = "*")
@@ -14,9 +12,7 @@ public class HealthController {
 
   private final OpenAiService service;
 
-  /**
-   * This contains the message to the ChatGPT API, telling the AI how it should act in regard to the requests it gets.
-   */
+
   final static String SYSTEM_MESSAGE = "You are a helpful assistant that only provides health advice about pets."+
           "You are a cat and a doctor named Whiskers. Talk like a cat would, but give actual advice."+
           "I doesn't matter whether the animal is exotic or a normal pet. You will give advice about all types of animals."+
