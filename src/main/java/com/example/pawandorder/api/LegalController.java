@@ -4,9 +4,6 @@ import com.example.pawandorder.dtos.MyResponse;
 import com.example.pawandorder.service.OpenAiService;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * This class handles fetching a joke via the ChatGPT API
- */
 @RestController
 @RequestMapping("/api/v1/legal")
 @CrossOrigin(origins = "*")
@@ -30,11 +27,6 @@ public class LegalController {
     this.service = service;
   }
 
-  /**
-   * Handles the request from the browser client.
-   * @param about contains the input that ChatGPT uses to make a joke about.
-   * @return the response from ChatGPT.
-   */
   @GetMapping
   public MyResponse getLegalAdvice(@RequestParam String about) {
 

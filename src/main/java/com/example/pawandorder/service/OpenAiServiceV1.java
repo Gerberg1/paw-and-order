@@ -29,8 +29,6 @@ public class OpenAiServiceV1 {
   @Value("${app.api-key}")
   private String API_KEY;
 
-  //See here for a decent explanation of the parameters send to the API via the requestBody
-  //https://platform.openai.com/docs/api-reference/completions/create
 
   @Value("${app.url}")
   public String URL;
