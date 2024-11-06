@@ -1,6 +1,10 @@
 const SERVER_URL = 'http://localhost:8080/api/v1/';
-//const apiUrl = 'https://api.thedogapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1';
-const apiKey = 'live_yPliWwLND5fesohygU4ppZCGQoINZ3C62UYs9ZvYymHBMejs45k2JPIxEngHiiQd';
+const apiUrlDog = 'https://api.thedogapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1';
+const apiUrlCat = 'https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1';
+const apiUrlFox = 'https://randomfox.ca/floof/'
+const apiUrlBear = 'https://placebear.com/?ref=public_apis'
+const apiKeyDog = 'live_yPliWwLND5fesohygU4ppZCGQoINZ3C62UYs9ZvYymHBMejs45k2JPIxEngHiiQd';
+const apiKeyCat = 'live_rZJSUjeVpQFx8cQOyxiOgiG5uSO1UaANUCJMVlcbrljlwDbe108jDrZEZoG8Py6O';
 const imageContainer = document.getElementById('imageContainer');
 
 document.getElementById('form-question').addEventListener('submit', getQuestion);
@@ -33,12 +37,15 @@ async function getQuestion(event) {
 
 function checkAnimal(animal) {
   if (animal.includes("dog")){
-    getAnimals('https://api.thedogapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1')
+    getAnimals(apiUrlDog, apiKeyDog)
   }
-  else {
-    return 'cat'}
+  else if (animal.includes("cat")) {
+    getAnimals(apiUrlCat, apiKeyCat)}
+  else if (animal.includes("fox")){
+    getAnimals(apiUrlBear, apiKeyDog)
+  }
 }
-function getAnimals(apiUrl){
+function getAnimals(apiUrl, apiKey){
   fetch(apiUrl, {
     headers: {
       'x-api-key': apiKey
