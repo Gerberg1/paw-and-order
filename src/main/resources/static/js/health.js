@@ -1,8 +1,8 @@
 const SERVER_URL = 'http://localhost:8080/api/v1/';
 const apiUrlDog = 'https://api.thedogapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1';
 const apiUrlCat = 'https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1';
+const apiUrlCatFact = 'https://catfact.ninja/fact'
 const apiUrlFox = 'https://randomfox.ca/floof/'
-const apiUrlDuck = 'https://random-d.uk/api/v2/random'
 const apiKeyDog = 'live_yPliWwLND5fesohygU4ppZCGQoINZ3C62UYs9ZvYymHBMejs45k2JPIxEngHiiQd';
 const apiKeyCat = 'live_rZJSUjeVpQFx8cQOyxiOgiG5uSO1UaANUCJMVlcbrljlwDbe108jDrZEZoG8Py6O';
 const imageContainer = document.getElementById('imageContainer');
@@ -41,12 +41,12 @@ function checkAnimal(animal) {
   }
   else if (animal.includes("cat")) {
     getAnimalsWithKey(apiUrlCat, apiKeyCat)
-    getCatFact()}
+    getCatFact(apiUrlCatFact)}
   else if (animal.includes("fox")){
     getAnimalsNoKey(apiUrlFox)
   }
-  else if (animal.includes("duck")){
-    getAnimalsNoKey(apiUrlDuck)
+  else if (animal.includes("fish")){
+    getAnimalsNoKey(apiUrlFish)
   }
 }
 function getAnimalsWithKey(apiUrl, apiKey){
@@ -98,8 +98,8 @@ function getAnimalsNoKey(apiUrl) {
 
 
 // Henter kattefaktumet og viser det i HTML
-function getCatFact (){
-  fetch('https://catfact.ninja/fact')
+function getCatFact (url){
+  fetch(url)
       .then(response => response.json())
       .then(data => {
         // Får fat i elementet i HTML med id 'cat-fact'
