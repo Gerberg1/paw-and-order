@@ -40,7 +40,8 @@ function checkAnimal(animal) {
     getAnimalsWithKey(apiUrlDog, apiKeyDog)
   }
   else if (animal.includes("cat")) {
-    getAnimalsWithKey(apiUrlCat, apiKeyCat)}
+    getAnimalsWithKey(apiUrlCat, apiKeyCat)
+    getCatFact()}
   else if (animal.includes("fox")){
     getAnimalsNoKey(apiUrlFox)
   }
@@ -77,21 +78,38 @@ function getAnimalsNoKey(apiUrl) {
   fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
-        // Extract the image URL from the response
-        const imageUrl = data.image; // 'image' field contains the fox image URL
-        // Create an img element and set its src attribute
+        // Brug 'url' feltet i stedet for 'image' for at få billed-URL'en
+        const imageUrl = data.url; // 'url' feltet indeholder andebilledet
+        // Opret et img element og sæt src attributten
         const img = document.createElement('img');
         img.src = imageUrl;
-        img.alt = 'Random Fox';
-        img.style.maxWidth = '100%'; // Optional: make the image responsive
-        // Clear any existing content in the image container
+        img.alt = 'Random Duck';
+        img.style.maxWidth = '100%'; // Valgfrit: gør billedet responsivt
+        // Ryd eksisterende indhold i billed-containeren
         imageContainer.innerHTML = '';
-        // Append the img element to the image container
+        // Tilføj img elementet til billed-containeren
         imageContainer.appendChild(img);
       })
       .catch(error => {
-        console.error('Error fetching fox image:', error);
+        console.error('Error fetching duck image:', error);
         imageContainer.innerHTML = '<p>Sorry, something went wrong.</p>';
+      });
+}
+
+
+// Henter kattefaktumet og viser det i HTML
+function getCatFact (){
+  fetch('https://catfact.ninja/fact')
+      .then(response => response.json())
+      .then(data => {
+        // Får fat i elementet i HTML med id 'cat-fact'
+        const factElement = document.getElementById('cat-fact');
+
+        // Indsætter kattefaktumet som tekst i elementet
+        factElement.textContent = data.fact;
+      })
+      .catch(error => {
+        console.error("Der opstod en fejl:", error);
       });
 }
 
@@ -136,3 +154,4 @@ async function handleHttpErrors(res) {
   }
   return res.json()
 }
+
