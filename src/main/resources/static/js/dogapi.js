@@ -1,7 +1,7 @@
 const apiUrl = 'https://api.thedogapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1';
 const apiKey = 'live_yPliWwLND5fesohygU4ppZCGQoINZ3C62UYs9ZvYymHBMejs45k2JPIxEngHiiQd';
+const hej = checkAnimal()
 const imageContainer = document.getElementById('imageContainer');
-
 
 fetch(apiUrl, {
     headers: {
