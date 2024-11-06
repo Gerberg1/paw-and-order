@@ -2,7 +2,7 @@ const SERVER_URL = 'http://localhost:8080/api/v1/';
 const apiUrlDog = 'https://api.thedogapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1';
 const apiUrlCat = 'https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1';
 const apiUrlFox = 'https://randomfox.ca/floof/'
-const apiUrlBear = 'https://placebear.com/?ref=public_apis'
+const apiUrlDuck = 'https://random-d.uk/api/v2/random'
 const apiKeyDog = 'live_yPliWwLND5fesohygU4ppZCGQoINZ3C62UYs9ZvYymHBMejs45k2JPIxEngHiiQd';
 const apiKeyCat = 'live_rZJSUjeVpQFx8cQOyxiOgiG5uSO1UaANUCJMVlcbrljlwDbe108jDrZEZoG8Py6O';
 const imageContainer = document.getElementById('imageContainer');
@@ -37,15 +37,18 @@ async function getQuestion(event) {
 
 function checkAnimal(animal) {
   if (animal.includes("dog")){
-    getAnimals(apiUrlDog, apiKeyDog)
+    getAnimalsWithKey(apiUrlDog, apiKeyDog)
   }
   else if (animal.includes("cat")) {
-    getAnimals(apiUrlCat, apiKeyCat)}
+    getAnimalsWithKey(apiUrlCat, apiKeyCat)}
   else if (animal.includes("fox")){
-    getAnimals(apiUrlBear, apiKeyDog)
+    getAnimalsNoKey(apiUrlFox)
+  }
+  else if (animal.includes("duck")){
+    getAnimalsNoKey(apiUrlDuck)
   }
 }
-function getAnimals(apiUrl, apiKey){
+function getAnimalsWithKey(apiUrl, apiKey){
   fetch(apiUrl, {
     headers: {
       'x-api-key': apiKey
@@ -67,6 +70,28 @@ function getAnimals(apiUrl, apiKey){
       })
       .catch(error => {
         console.error('Error:', error);
+      });
+}
+
+function getAnimalsNoKey(apiUrl) {
+  fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        // Extract the image URL from the response
+        const imageUrl = data.image; // 'image' field contains the fox image URL
+        // Create an img element and set its src attribute
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.alt = 'Random Fox';
+        img.style.maxWidth = '100%'; // Optional: make the image responsive
+        // Clear any existing content in the image container
+        imageContainer.innerHTML = '';
+        // Append the img element to the image container
+        imageContainer.appendChild(img);
+      })
+      .catch(error => {
+        console.error('Error fetching fox image:', error);
+        imageContainer.innerHTML = '<p>Sorry, something went wrong.</p>';
       });
 }
 
