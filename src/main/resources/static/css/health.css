@@ -82,7 +82,7 @@
     font-family: 'Georgia', serif;
     font-size: 3em;
     font-weight: bold;
-    color: #52d9ba;
+    color: #8B4513; /* Brown color to match the button */
     position: relative;
     display: inline-block;
 }
@@ -94,7 +94,7 @@
     top: 50%;
     width: 50px;
     height: 5px;
-    background-color: #5e8a83;
+    background-color: #8B4513;
 }
 
 .logo h2:before {
@@ -106,8 +106,18 @@
 }
 
 .logo .paw-icon {
-    color: #FF4500;
+    color: #FF4500; /* Orange-red color */
     margin-right: 10px;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-link:hover {
+    text-decoration: none;
+    color: inherit;
 }
 
 @media (max-width: 576px) {
