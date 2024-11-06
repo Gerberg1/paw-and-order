@@ -2,6 +2,7 @@ const SERVER_URL = 'http://localhost:8080/api/v1/';
 const apiUrlDog = 'https://api.thedogapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1';
 const apiUrlCat = 'https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1';
 const apiUrlCatFact = 'https://catfact.ninja/fact'
+const apiUrlDogFact = 'https://dog-api.kinduff.com/api/facts'
 const apiUrlFox = 'https://randomfox.ca/floof/'
 const apiKeyDog = 'live_yPliWwLND5fesohygU4ppZCGQoINZ3C62UYs9ZvYymHBMejs45k2JPIxEngHiiQd';
 const apiKeyCat = 'live_rZJSUjeVpQFx8cQOyxiOgiG5uSO1UaANUCJMVlcbrljlwDbe108jDrZEZoG8Py6O';
@@ -38,10 +39,11 @@ async function getQuestion(event) {
 function checkAnimal(animal) {
   if (animal.includes("dog")){
     getAnimalsWithKey(apiUrlDog, apiKeyDog)
+      getAnimalFact(apiUrlDogFact)
   }
   else if (animal.includes("cat")) {
     getAnimalsWithKey(apiUrlCat, apiKeyCat)
-    getCatFact(apiUrlCatFact)}
+    getAnimalFact(apiUrlCatFact)}
   else if (animal.includes("fox")){
     getAnimalsNoKey(apiUrlFox)
   }
@@ -98,12 +100,12 @@ function getAnimalsNoKey(apiUrl) {
 
 
 // Henter kattefaktumet og viser det i HTML
-function getCatFact (url){
+function getAnimalFact (url){
   fetch(url)
       .then(response => response.json())
       .then(data => {
         // Får fat i elementet i HTML med id 'cat-fact'
-        const factElement = document.getElementById('cat-fact');
+        const factElement = document.getElementById('animal-fact');
 
         // Indsætter kattefaktumet som tekst i elementet
         factElement.textContent = data.fact;
@@ -112,6 +114,7 @@ function getCatFact (url){
         console.error("Der opstod en fejl:", error);
       });
 }
+
 
 
 
