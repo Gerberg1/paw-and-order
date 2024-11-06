@@ -63,14 +63,14 @@
 
 
 #btn-get-question {
-    background-color: rgb(82, 217, 186);
-    border-color: #4d9485;
+    background-color: rgba(139, 69, 19, 0.68);
+    border-color: #532709;
     color: #fff;
 }
 
 #btn-get-question:hover {
-    background-color: #9fe7dc;
-    border-color: #5e8a83;
+    background-color: #A0522D;
+    border-color: #A0522D;
 }
 
 .logo {
@@ -82,7 +82,7 @@
     font-family: 'Georgia', serif;
     font-size: 3em;
     font-weight: bold;
-    color: #52d9ba;
+    color: #8B4513;
     position: relative;
     display: inline-block;
 }
@@ -94,7 +94,7 @@
     top: 50%;
     width: 50px;
     height: 5px;
-    background-color: #5e8a83;
+    background-color: #8B4513;
 }
 
 .logo h2:before {
