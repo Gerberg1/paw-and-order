@@ -156,4 +156,35 @@
         color: #8B4513;
     }
 
+    /* Styles for the fact speech bubble */
+    .fact-speech-bubble {
+        position: relative;
+        background: linear-gradient(135deg, #fdfdfd 0%, #eaeaea 100%);
+        border: 2px solid #ccc;
+        border-radius: 15px;
+        padding: 15px;
+        max-width: 80%;
+        margin: 20px auto;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+        text-align: center;
+    }
+
+    .fact-speech-bubble:after {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 0 15px 20px 15px;
+        border-style: solid;
+        border-color: transparent transparent #fdfdfd transparent;
+    }
+
+    #animal-fact {
+        margin: 0;
+        font-size: 1.1em;
+    }
+
 }
