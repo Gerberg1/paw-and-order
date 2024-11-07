@@ -109,20 +109,25 @@ function getAnimalsNoKey(apiUrl) {
 
 
 // Henter kattefaktumet og viser det i HTML
-function getAnimalFact (url){
+function getAnimalFact(url) {
   fetch(url)
       .then(response => response.json())
       .then(data => {
-        // Får fat i elementet i HTML med id 'cat-fact'
+        // Får fat i elementet i HTML med id 'animal-fact'
         const factElement = document.getElementById('animal-fact');
 
-        // Indsætter kattefaktumet som tekst i elementet
-        factElement.textContent = data.fact;
+        // Fjerner 'hidden'-klassen for at gøre faktum synligt
+        factElement.classList.remove('hidden');
+
+        // Opdaterer faktateksten
+        const newFactElement = document.getElementById('new-fact');
+        newFactElement.textContent = data.fact;
       })
       .catch(error => {
         console.error("Der opstod en fejl:", error);
       });
 }
+
 
 
 
