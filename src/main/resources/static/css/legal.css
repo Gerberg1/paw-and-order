@@ -168,3 +168,20 @@
     }
 
 }
+.animal-fact {
+    margin-top: 20px;
+    top: 300px;
+    background: linear-gradient(135deg, #fdfdfd 0%, #eaeaea 100%);
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 80%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+
+}
+
+.hidden {
+    display: none;
+}
