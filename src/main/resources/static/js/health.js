@@ -47,8 +47,8 @@ function checkAnimal(animal) {
   else if (animal.includes("fox")){
     getAnimalsNoKey(apiUrlFox)
   }
-  else if (animal.includes("fish")){
-    getAnimalsNoKey(apiUrlFish)
+  else if (animal.includes("bear")){
+  return "bear"
   }
 }
 function getAnimalsWithKey(apiUrl, apiKey){
@@ -66,6 +66,7 @@ function getAnimalsWithKey(apiUrl, apiKey){
           img.src = imageUrl;
           img.alt = "Random dog image";
           img.classList.add("img-fluid");
+          imageContainer.innerHTML = ''; //DENNE HER LINJER!!!!!!!!
           imageContainer.appendChild(img);
         } else {
           console.log('No images found');
@@ -76,26 +77,34 @@ function getAnimalsWithKey(apiUrl, apiKey){
       });
 }
 
+
 function getAnimalsNoKey(apiUrl) {
   fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
-        // Brug 'url' feltet i stedet for 'image' for at få billed-URL'en
-        const imageUrl = data.url; // 'url' feltet indeholder andebilledet
-        // Opret et img element og sæt src attributten
+        // Check if 'url' or 'image' property exists in the returned data
+        const imageUrl = data.url || data.image; // Use 'image' if 'url' is not available
+        if (!imageUrl) {
+          throw new Error("No image URL found in the response");
+        }
+
+        // Create an img element and set the src attribute
         const img = document.createElement('img');
         img.src = imageUrl;
-        img.alt = 'Random Duck';
-        img.style.maxWidth = '100%'; // Valgfrit: gør billedet responsivt
-        // Ryd eksisterende indhold i billed-containeren
+        img.alt = 'Random Animal';
+        img.style.maxWidth = '100%'; // Optional: make the image responsive
+
+        // Clear existing content in the image container
         imageContainer.innerHTML = '';
-        // Tilføj img elementet til billed-containeren
+
+        // Append the img element to the image container
         imageContainer.appendChild(img);
       })
       .catch(error => {
-        console.error('Error fetching duck image:', error);
+        console.error('Error fetching animal image:', error);
         imageContainer.innerHTML = '<p>Sorry, something went wrong.</p>';
       });
+  console.log(apiUrl);
 }
 
 
