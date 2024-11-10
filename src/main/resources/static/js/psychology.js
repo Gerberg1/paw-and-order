@@ -39,16 +39,13 @@ async function getQuestion(event) {
 function checkAnimal(animal) {
   if (animal.includes("dog")){
     getAnimalsWithKey(apiUrlDog, apiKeyDog)
-    getAnimalFact(apiUrlDogFact)
+      getAnimalFact(apiUrlDogFact)
   }
   else if (animal.includes("cat")) {
     getAnimalsWithKey(apiUrlCat, apiKeyCat)
     getAnimalFact(apiUrlCatFact)}
   else if (animal.includes("fox")){
     getAnimalsNoKey(apiUrlFox)
-  }
-  else if (animal.includes("bear")){
-    return "bear"
   }
 }
 function getAnimalsWithKey(apiUrl, apiKey){
@@ -66,7 +63,7 @@ function getAnimalsWithKey(apiUrl, apiKey){
           img.src = imageUrl;
           img.alt = "Random dog image";
           img.classList.add("img-fluid");
-          imageContainer.innerHTML = ''; //DENNE HER LINJER!!!!!!!!
+          imageContainer.innerHTML = '';
           imageContainer.appendChild(img);
         } else {
           console.log('No images found');
@@ -81,22 +78,18 @@ function getAnimalsNoKey(apiUrl) {
   fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
-        // Check if 'url' or 'image' property exists in the returned data
-        const imageUrl = data.url || data.image; // Use 'image' if 'url' is not available
+
+        const imageUrl = data.url || data.image;
         if (!imageUrl) {
           throw new Error("No image URL found in the response");
         }
 
-        // Create an img element and set the src attribute
         const img = document.createElement('img');
         img.src = imageUrl;
         img.alt = 'Random Animal';
-        img.style.maxWidth = '100%'; // Optional: make the image responsive
+        img.style.maxWidth = '100%';
 
-        // Clear existing content in the image container
         imageContainer.innerHTML = '';
-
-        // Append the img element to the image container
         imageContainer.appendChild(img);
       })
       .catch(error => {
@@ -107,24 +100,26 @@ function getAnimalsNoKey(apiUrl) {
 }
 
 
-// Henter kattefaktumet og viser det i HTML
 function getAnimalFact(url) {
-  fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        // Får fat i elementet i HTML med id 'animal-fact'
-        const factElement = document.getElementById('animal-fact');
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const factElement = document.getElementById('animal-fact');
+            const newFactElement = document.getElementById('new-fact');
 
-        // Fjerner 'hidden'-klassen for at gøre faktum synligt
-        factElement.classList.remove('hidden');
+            if (factElement && newFactElement) {
+                factElement.classList.remove('hidden');
 
-        // Opdaterer faktateksten
-        const newFactElement = document.getElementById('new-fact');
-        newFactElement.textContent = data.fact;
-      })
-      .catch(error => {
-        console.error("Der opstod en fejl:", error);
-      });
+                const factText = data.fact || (data.facts ? data.facts[0] : "Fact not found");
+
+                newFactElement.textContent = factText;
+            } else {
+                console.warn("One or both DOM elements are missing");
+            }
+        })
+        .catch(error => {
+            console.error("An error occured:", error);
+        });
 }
 
 
